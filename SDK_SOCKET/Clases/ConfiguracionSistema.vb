@@ -9,6 +9,8 @@ Public Class ConfiguracionSistema
                 Directory.CreateDirectory(DirectorioConfiguracion) 'CREACIÓN DEL DIRECTORIO.'
             End If
             If File.Exists(DirectorioArchivoConfiguracion) = False Then 'VERIFICACIÓN DE EXISTENCIA DEL ARCHIVO.'
+                ' EN CASO DE NO EXISTIR EL ARCHIVO DE CONFIGURACIÓN, EL SISTEMA TE MANDA AL FORMULARIO PARA CREAR'
+                ' EL ARCHIVO DE CONFIGURACIÓN.'
                 Dim Path = File.Create(DirectorioArchivoConfiguracion) 'CREACIÓN DEL ARCHIVO CON LOS DARTOS DE CONEXIÓN.'
                 Path.Close() 'CIERRA EL ARCHIVO PARA QUE PUEDA SER UTILIZADO.'
                 Dim Formulario As New ConfiguracionDatos()
@@ -23,7 +25,8 @@ Public Class ConfiguracionSistema
             End If
         Catch ex As Exception
             MsgBox("Problema: " & ex.Message) 'MENSAJE DE ERROR DEL SISTEMA.'
-            File.Delete("C:\TeknoCom\Socket\ConfiguracionSocket.txt") 'BORRAR EL ARCHIVO DE CONFIGURACIÓN VACIO.'
+            'File.Delete("C:\TeknoCom\Socket\ConfiguracionSocket.txt") 'BORRAR EL ARCHIVO DE CONFIGURACIÓN VACIO.'
+            My.Computer.FileSystem.DeleteFile(DirectorioArchivoConfiguracion, Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs, Microsoft.VisualBasic.FileIO.RecycleOption.DeletePermanently) 'BORRA PERMANENTEMENTE EL ARCHIVO DE CONFIGURACIÓN.'
             Application.ExitThread()
         End Try
     End Function

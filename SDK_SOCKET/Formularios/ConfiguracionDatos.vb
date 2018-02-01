@@ -8,8 +8,9 @@ Public Class ConfiguracionDatos
         Else
             Dim Texto() As String = {ComboBox1.SelectedItem.ToString.Trim() & "¬" & TextBoxBaseDatos.Text.Trim() & "¬" & TextBoxTabla.Text.Trim() & "¬" & TextBoxUsuario.Text.Trim() & "¬" & TextBoxContraseña.Text.Trim()}
 
-            File.WriteAllLines("C:\TeknoCom\Socket\ConfiguracionSocket.txt", Texto) ' ESCRIBIR LA INFORMACIÓN AL ARCHIVO DE CONFIGURACIÓN.'
+            File.WriteAllLines(DirectorioArchivoConfiguracion, Texto) ' ESCRIBIR LA INFORMACIÓN AL ARCHIVO DE CONFIGURACIÓN.'
             ConfiguracionDatosCompleta = True ' 
+            EncryptFile(DirectorioArchivoConfiguracion, Key) 'ENCRIPTACIÓN DE INFORMACIÓN.'
             Me.Close() 'CERRAR EL FORMULARIO.'
         End If
     End Sub
@@ -27,7 +28,7 @@ Public Class ConfiguracionDatos
         Try
             If ConfiguracionDatosCompleta = False Then 'VERIFICACIÓN DE QUE EXISTE LA CONFIGURACIÓN DE DATOS PARA REALIZAR LA CONEXIÓN CON SQL.'
                 MsgBox("No se ha realizado la configuración de la conexión, se le volverá a preguntar en el proximo inicio.")
-                File.Delete("C:\TeknoCom\Socket\ConfiguracionSocket.txt") ' BORRADO DEL ARCHIVO DE CONFIGURACIÓN. SE VOLVERA A REQUERIR EN EL PROXIMO INICIO DE LA APLICACIÓN.'
+                File.Delete(DirectorioArchivoConfiguracion) ' BORRADO DEL ARCHIVO DE CONFIGURACIÓN. SE VOLVERA A REQUERIR EN EL PROXIMO INICIO DE LA APLICACIÓN.'
                 Application.ExitThread() ' TERMINAR PROCESO DE APLICACIÓN.'
             End If
             

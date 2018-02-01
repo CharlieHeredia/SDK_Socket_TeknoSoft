@@ -2,7 +2,7 @@
 Imports System.IO
 Imports System.Text
 Module Funciones_Globales
-    Private Function EncryptFile(ByVal filepath As String, ByVal key As String)
+    Public Function EncryptFile(ByVal filepath As String, ByVal key As String)
         Dim plainContent As Byte() = File.ReadAllBytes(filepath)
         Dim DES As New DESCryptoServiceProvider()
         Using (DES)
@@ -23,7 +23,7 @@ Module Funciones_Globales
         End Using
 
     End Function
-    Private Function DecryptFile(ByVal filepath As String, ByVal key As String)
+    Public Function DecryptFile(ByVal filepath As String, ByVal key As String)
         Dim encrypted As Byte() = File.ReadAllBytes(filepath)
         Dim DES As New DESCryptoServiceProvider()
         Using (DES)

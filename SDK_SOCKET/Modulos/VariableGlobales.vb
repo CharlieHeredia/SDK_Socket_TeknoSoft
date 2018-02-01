@@ -15,4 +15,6 @@ Module VariableGlobales
 
     Public DirectorioConfiguracion As String = "C:\TeknoCom\Socket"
     Public DirectorioArchivoConfiguracion As String = "C:\TeknoCom\Socket\ConfiguracionSocket.txt"
+
+    Public Key As String = "teknocom"
 End Module
