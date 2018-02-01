@@ -12,4 +12,7 @@ Module VariableGlobales
     Public ConfiguracionDatosCompleta As Boolean = False 'VERIFICADOR DE DATOS DE CONEXIÓN CON SQL. GUARDADOS EN UN ARCHIVO C:\Teknocom\Socket\.'
 
     Public aRutaFormato As String = "" 'UBICACIÓN DEL ARCHIVO DE FORMATO.'
+
+    Public DirectorioConfiguracion As String = "C:\TeknoCom\Socket"
+    Public DirectorioArchivoConfiguracion As String = "C:\TeknoCom\Socket\ConfiguracionSocket.txt"
 End Module

@@ -5,11 +5,11 @@ Public Class ConfiguracionSistema
 
     Public Function CargarDatosConfiguracion()
         Try
-            If Directory.Exists("C:\TeknoCom\Socket") = False Then 'VERIFICACIÓN DE EXISTENCIA DEL DIRECTORIO.'
-                Directory.CreateDirectory("C:\TeknoCom\Socket") 'CREACIÓN DEL DIRECTORIO.'
+            If Directory.Exists(DirectorioConfiguracion) = False Then 'VERIFICACIÓN DE EXISTENCIA DEL DIRECTORIO.'
+                Directory.CreateDirectory(DirectorioConfiguracion) 'CREACIÓN DEL DIRECTORIO.'
             End If
-            If File.Exists("C:\TeknoCom\Socket\ConfiguracionSocket.txt") = False Then 'VERIFICACIÓN DE EXISTENCIA DEL ARCHIVO.'
-                Dim Path = File.Create("C:\TeknoCom\Socket\ConfiguracionSocket.txt") 'CREACIÓN DEL ARCHIVO CON LOS DARTOS DE CONEXIÓN.'
+            If File.Exists(DirectorioArchivoConfiguracion) = False Then 'VERIFICACIÓN DE EXISTENCIA DEL ARCHIVO.'
+                Dim Path = File.Create(DirectorioArchivoConfiguracion) 'CREACIÓN DEL ARCHIVO CON LOS DARTOS DE CONEXIÓN.'
                 Path.Close() 'CIERRA EL ARCHIVO PARA QUE PUEDA SER UTILIZADO.'
                 Dim Formulario As New ConfiguracionDatos()
 

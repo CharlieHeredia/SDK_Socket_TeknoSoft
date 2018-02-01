@@ -95,6 +95,7 @@
       <DependentUpon>Principal.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulos\Funciones_Globales.vb" />
     <Compile Include="Modulos\SDK_ADMW.vb" />
     <Compile Include="Modulos\VariableGlobales.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
