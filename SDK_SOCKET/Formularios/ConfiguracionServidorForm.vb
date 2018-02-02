@@ -22,8 +22,9 @@ Public Class ConfiguracionServidorForm
     End Sub
 
     Private Sub ConfiguracionServidorForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        DecryptFile(DirectorioArchivoConfiguracion, Key)
         Dim datos() As String 'ARREGLO PARA ALMACENAR LOS DATOS 
-        Dim Path As String = "C:\TeknoCom\Socket\ConfiguracionSocket.txt" 'UBICACIÓN DEL ARCHIVO.'
+        Dim Path As String = DirectorioArchivoConfiguracion  'UBICACIÓN DEL ARCHIVO.'
         Dim apuntadorArchivo As New StreamReader(Path, System.Text.Encoding.Default, False) 'APUNTADOR AL ARCHIVO.'
         Dim lineaTexto As String = "" 'VARIABLE PARA ALMACENAR LA LINEA DE TEXTO QUE SE LEA DEL ARCHIVO.'
         lineaTexto = apuntadorArchivo.ReadLine 'SE LEE LA PRIMERA LINEA DEL ARCHIVO.'
@@ -35,5 +36,6 @@ Public Class ConfiguracionServidorForm
         LabelUsuario.Text = datos(3).Trim().Substring(0, datos(3).Length - 1)
         LabelPassword.Text = datos(4).Trim().Substring(0, datos(4).Length - 1)
         apuntadorArchivo.Close()
+        EncryptFile(DirectorioArchivoConfiguracion, Key)
     End Sub
 End Class
